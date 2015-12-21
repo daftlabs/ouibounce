@@ -102,6 +102,13 @@ return function ouibounce(el, custom_config) {
     disable();
   }
 
+  function remove() {
+    // remove listeners
+    _html.removeEventListener('mouseleave', handleMouseleave);
+    _html.removeEventListener('mouseenter', handleMouseenter);
+    _html.removeEventListener('keydown', handleKeydown);
+  }
+
   function disable(custom_options) {
     var options = custom_options || {};
 
@@ -129,16 +136,14 @@ return function ouibounce(el, custom_config) {
 
     document.cookie = cookieName + '=true' + cookieExpire + cookieDomain + sitewide;
 
-    // remove listeners
-    _html.removeEventListener('mouseleave', handleMouseleave);
-    _html.removeEventListener('mouseenter', handleMouseenter);
-    _html.removeEventListener('keydown', handleKeydown);
+    remove();
   }
 
   return {
     fire: fire,
     disable: disable,
-    isDisabled: isDisabled
+    isDisabled: isDisabled,
+    remove: remove,
   };
 }
 

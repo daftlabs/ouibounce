@@ -144,6 +144,7 @@ return function ouibounce(el, custom_config) {
     disable: disable,
     isDisabled: isDisabled,
     remove: remove,
+    attach: attachOuiBounce,
   };
 }
 
